@@ -6,24 +6,7 @@
     <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-	<header><a id="headertitle" href="main.html">Eat.com</a>
-		<nav>
-			<div class="menuCategory">
-			    <a href="search.html">Search</a>
-			</div>
-			<div class="menuCategory">
-				
-		    	<span class="navtitle">Recipe</span>
-		    	<div class="withSeveralLinks">
-			    	<a href="chicken.html">Chicken</a>
-			    	<a href="beef.html">Beef</a>
-				</div>
-			</div>
-			<div class="menuCategory">
-			    <a href="contact.html">Contact us</a>
-			</div>
-		</nav>
-	</header>
+    <?php include 'header.php'?>
     
     <section>
        <div>

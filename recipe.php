@@ -1,3 +1,18 @@
+<?php include 'data.php';
+if (isset($_GET['recipe'])){
+    $recipeCode= $_GET['recipe'];
+} else {
+    include 'main.php';
+    die;
+}
+if (isset($recipesData[$recipeCode])){
+    $currentData = $recipesData[$recipeCode];
+} else {
+    include 'main.php';
+    die;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,25 +21,8 @@
     <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-	<header><a id="headertitle" href="main.html">Eat.com</a>
-		<nav>
-			<div class="menuCategory">
-			    <a href="search.html">Search</a>
-			</div>
-			<div class="menuCategory">
-				
-		    	<span class="navtitle">Recipe</span>
-		    	<div class="withSeveralLinks">
-			    	<a href="chicken.html">Chicken</a>
-			    	<a href="beef.html">Beef</a>
-				</div>
-			</div>
-			<div class="menuCategory">
-			    <a href="contact.html">Contact us</a>
-			</div>
-		</nav>
-	</header>
-    
+	
+    <?php include 'header.php'?>
 	<aside>	
 		<div id="ingredientList">
     		<table>
@@ -36,43 +34,31 @@
     					quantity
     				</th>
     			</tr>
+    		<?php 
+    		foreach ($currentData['ingredient'] as $label => $quantity){
+    		?>
     			<tr>
     				<td>
-    					steak
+    					<?php echo($label)?>
     				</td>
     				<td>
-    					200gr
+    					<?php echo($quantity)?>
     				</td>
     			</tr>
-    			<tr>
-    				<td>
-    					oil
-    				</td>
-    				<td>
-    					1cl
-    				</td>
-    			</tr>
-    			<tr>
-    				<td>
-    					salt
-    				</td>
-    				<td>
-    					1cl
-    				</td>
-    			</tr>
+    		<?php }?>
     		</table>
     	</div>
 
 	</aside>
 
     <section>
-    	<img id="recipeImage" src="image/beef.jpeg"/>
+    	<img id="recipeImage" src="image/<?php echo $recipeCode?>.jpeg"/>
 
 
     	<div class="content">
     		<p>
-    			<span class="labelTitle">Preparation time&nbsp;: </span>5 minutes<br />
-    			<span class="labelTitle">Baking time&nbsp;: </span>5 minutes<br />
+    			<span class="labelTitle">Preparation time&nbsp;: </span><?php echo $currentData['preparationTime']?><br />
+    			<span class="labelTitle">Baking time&nbsp;: </span><?php echo $currentData['bakingTime']?><br />
     		</p>
     		<h1>Preparation</h1>
     		<p>
