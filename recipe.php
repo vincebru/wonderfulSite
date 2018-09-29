@@ -1,12 +1,16 @@
-<?php include 'data.php';
+<?php include_once 'database.php';
 if (isset($_GET['recipe'])){
     $recipeCode= $_GET['recipe'];
 } else {
     include 'main.php';
     die;
 }
-if (isset($recipesData[$recipeCode])){
-    $currentData = $recipesData[$recipeCode];
+
+$recipesData = getRecipeByCode($recipeCode);
+
+if (!empty($recipesData)){
+    $currentData = $recipesData[0];
+    $ingredients = getIngredientByRecipeCode($recipeCode);
 } else {
     include 'main.php';
     die;
@@ -35,14 +39,14 @@ if (isset($recipesData[$recipeCode])){
     				</th>
     			</tr>
     		<?php 
-    		foreach ($currentData['ingredient'] as $label => $quantity){
+    		foreach ($ingredients as $ingredient){
     		?>
     			<tr>
     				<td>
-    					<?php echo($label)?>
+    					<?php echo($ingredient['label'])?>
     				</td>
     				<td>
-    					<?php echo($quantity)?>
+    					<?php echo($ingredient['quantity'])?>
     				</td>
     			</tr>
     		<?php }?>
