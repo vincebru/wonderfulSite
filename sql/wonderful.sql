@@ -93,8 +93,8 @@ CREATE TABLE IF NOT EXISTS `recipe` (
 --
 
 INSERT INTO `recipe` (`recipe_id`, `code`, `label`, `preparationTime`, `bakingTime`) VALUES
-(1, 'Chicken', 'Chicken', '10 minutes', '80 minutes'),
-(2, 'beef', 'beef', '5 minutes', '5 minutes');
+(1, 'chicken', 'Chicken', '10 minutes', '80 minutes'),
+(2, 'beef', 'Beef', '5 minutes', '5 minutes');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
